@@ -1,70 +1,65 @@
+<!DOCTYPE html>
+<html>
 
+  <head>
 
-<style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/chessboard-1.0.0.js"></script>
+    <script src="./assets/js/chessboard-1.0.0.min.js"></script>
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
+  </head>
 
-  p {
-    margin: 0;
-  }
+  <body>
 
-  .spacer {
-    flex: 1;
-  }
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand">BonChess</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-av ml-auto">
+            <li><a href="#" class="nav-link"> Teams</a><li>
+            <li><a href="#" class="nav-link"> Teams</a><li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  .content {
-    display: flex;
-    margin: 32px auto;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
+    <div id = "content-container">
+      <div id="board1" style="width: 400px">
+        <script>
+          var board1 = ChessBoard('board1', {
+            draggable: true,
+            dropOffBoard: 'trash',
+            sparePieces: true
+          });
+          $('#startBtn').on('click', board1.start)
+          $('#clearBtn').on('click', board1.clear)
+        </script>
+      </div>
 
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
+      <button id="startBtn">Start Position</button>
+      <button id="clearBtn">Clear Board</button>
 
-  a:hover {
-    color: #125699;
-  }
+      <!-- Link to Contact -->
+      <div class = "infolink">
+        <a href = "/about">
+          <div class="infotext">
+            <h3>Contact Us</h3>
+          </div>
+        </a>
+      </div>
 
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
+    </div>
+  </body>
 
-  footer a {
-    display: flex;
-    align-items: center;
-  }
+  <div>
+    <!-- Footer -->
+    <footer>
 
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
+    </footer>
 
-  }
+  </div>
 
-</style>
-
-<div>
-  <!-- Footer -->
-  <footer>
-     <p>HELLO</p>
-  </footer>
-
-</div>
-
+</html>
 
 <router-outlet></router-outlet>
+
