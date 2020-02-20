@@ -1,1 +1,1 @@
-# BonChess, a chess website!
+# Banking website!
