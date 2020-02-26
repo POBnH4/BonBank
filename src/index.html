@@ -20,16 +20,16 @@
     <a href="#home" class="w3-bar-item w3-button"><img id ="logo" src="assets/img/bankLogo.png" alt"bank-logo" style="width:60px; height:60px;">  <b>BonBank</b></a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small" style="margin: 1% 0 0 0;">
-      <button href="pages/login.html" class="w3-bar-item w3-button open-button" onclick="document.getElementById('id01').style.display='block'" style="width:7%; height:4%;">Login</button>
-      <a href="pages/register.html" class="w3-bar-item w3-button">Register</a>
-      <a href="pages/contact.html" class="w3-bar-item w3-button">Contact us</a>
+      <button class="w3-bar-item w3-button open-button" onclick="document.getElementById('id01').style.display='block'" style="width:7%; height:4%;">Login</button>
+      <a href="assets/pages/register.html" class="w3-bar-item w3-button">Register</a>
+      <a href="assets/pages/contact.html" class="w3-bar-item w3-button">Contact us</a>
     </div>
   </div>
 </div>
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:100%;height:10%;" id="home">
-  <img class="w3-image" src="assets/img/1.png" alt="Bank Offer Photo" width="100%" height="600">
+  <img class="w3-image" src="assets/img/1.png" alt="Bank Offer Photo" width="100%" height="30%">
   <div class="w3-display-middle w3-margin-top w3-center">
     <h1 class="w3-xxlarge w3-text-white">
       <span class="w3-padding w3-black w3-opacity-min"><b>Personal Banking</b></span>
@@ -44,6 +44,8 @@
   <div class="w3-container w3-padding-32" id="services">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">BonBank Services</h3>
   </div>
+
+  <p>Please follow <a href="assets/pages/profile.html">this link</a>.</p>
 
   <div class="w3-row-padding">
     <div class="w3-col l3 m6 w3-margin-bottom">
@@ -207,7 +209,7 @@
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php" method="post">
+  <form class="modal-content animate" action="http://localhost:4200/assets/pages/profile.html" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
@@ -219,7 +221,7 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
         
-      <button type="submit">Login</button>
+      <button type="submit" href="assets/pages/profile.html">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
