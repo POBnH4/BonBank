@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Bank</title>
   <meta charset="UTF-8">
+  <title>BonBank</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="assets/css/index.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="assets/img/bankLogo.png">
 
   <script src="assets/js/index.js"></script>
 
@@ -21,7 +20,7 @@
     <a href="#home" class="w3-bar-item w3-button"><img id ="logo" src="assets/img/bankLogo.png" alt"bank-logo" style="width:60px; height:60px;">  <b>BonBank</b></a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small" style="margin: 1% 0 0 0;">
-      <button href="pages/login.html" class="w3-bar-item w3-button open-button" onclick="openForm()">Login</button>
+      <button href="pages/login.html" class="w3-bar-item w3-button open-button" onclick="document.getElementById('id01').style.display='block'" style="width:7%; height:4%;">Login</button>
       <a href="pages/register.html" class="w3-bar-item w3-button">Register</a>
       <a href="pages/contact.html" class="w3-bar-item w3-button">Contact us</a>
     </div>
@@ -32,8 +31,9 @@
 <header class="w3-display-container w3-content w3-wide" style="max-width:100%;height:10%;" id="home">
   <img class="w3-image" src="assets/img/1.png" alt="Bank Offer Photo" width="100%" height="600">
   <div class="w3-display-middle w3-margin-top w3-center">
-    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Personal Banking</b>
-    </span><span class="w3-hide-small w3-text-black"><br>Switch your mortgage with ease</span></h1>
+    <h1 class="w3-xxlarge w3-text-white">
+      <span class="w3-padding w3-black w3-opacity-min"><b>Personal Banking</b></span>
+    </h1>
   </div>
 </header>
 
@@ -49,32 +49,51 @@
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">The BonBank App</div>
-        <img src="assets/img/2.jpg" alt="House" style="width:100%; height:10%;">
-        <h3>blah blah</h3>
-        <p>Check your balance, send money and earn rewards on your mobile with the Barclays app.</p>
+        <img src="assets/img/2.jpg" alt="House" style="width:100%; height:20%;">
+        <h3 style="margin: 4% 0 0 0;">The BonBank app</h3>
+        <p>Take control of your money
+        <br><br>
+        Check your balance, send money and earn rewards
+        on your mobile with the BonBank app.</p>
       </div>
+      <br>
+      <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Get the app</button>
     </div>
 
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Bank online</div>
-        <img src="/w3images/house2.jpg" alt="House" style="width:100%">
-        <h3>blah blah</h3>
-        <p>Check your balance, send money and earn rewards on your mobile with the Barclays app.</p>
+        <img src="assets/img/3.jpg" alt="House" style="width:100%">
+        <h3>Bank online</h3>
+        <p>Online Banking gives you quick, secure and convenient access to your accounts.</p>
+        <br><br><br><br>
+        <button href="pages/register.html" class="w3-bar-item w3-button offers-button">Register now</button>
       </div>
     </div>
 
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Helping younger generations</div>
-        <img src="/w3images/house3.jpg" alt="House" style="width:100%">
+        <img src="assets/img/4.jpg" alt="House" style="width:100%">
+        <h3>Helping younger generations</h3>
+        <p>Setting your family up for success
+        <br><br><br>
+        Whatever your relation to those you want to help,
+        we’ll give you ideas for helping them to get ahead in life.</p>
+        <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Help yonger generations</button>
       </div>
     </div>
 
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
         <div class="w3-display-topleft w3-black w3-padding">Help & support</div>
-        <img src="/w3images/house4.jpg" alt="House" style="width:100%">
+        <img src="assets/img/5.jpg" alt="House" style="width:100%">
+        <h3>Help & support</h3>
+        <p>Unknown transaction?
+        <br><br>
+        Lost or stolen card?</p>
+        <br><br>
+        <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Help & FAQs</button>
       </div>
     </div>
   </div>
@@ -82,73 +101,85 @@
   <div class="w3-row-padding">
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
-        <img src="/w3images/house2.jpg" alt="House" style="width:99%">
+        <div class="w3-display-topleft w3-black w3-padding">Investment ISA</div>
+        <img src="assets/img/6.jpg" alt="House" style="width:99%">
+        <h3>Investment ISA</h3>
+        <p>Don’t miss out – use your ISA allowance by 5 April, and you won’t pay tax on any money your ISA makes.
+        <br><br>
+        Investments can fall and rise in value. Tax rules can change, and individual effects vary.</p>
+        <br>
+        <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Our Investment ISA</button>
       </div>
     </div>
 
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-        <img src="/w3images/house5.jpg" alt="House" style="width:99%">
+        <div class="w3-display-topleft w3-black w3-padding">Manage your debt</div>
+        <img src="assets/img/7.jpg" alt="House" style="width:99%">
+        <h3>Manage your debt</h3>
+        <p>By consolidating your debts, you’ll get fixed personalised
+        repayments and it’ll be easier to manage your finances.
+        Browse our range of options to see what suits your needs.
+        </p>
+        <br><br><br>
+        <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Explore ways to borrow</button>
       </div>
     </div>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-        <img src="/w3images/house4.jpg" alt="House" style="width:99%">
+        <div class="w3-display-topleft w3-black w3-padding">Boncard Forward</div>
+        <img src="assets/img/8.jpg" alt="House" style="width:99%">
+        <h3>Boncard Forward</h3>
+        <p>If you’re new to credit cards, Boncard Forward could be for you.
+        It develops with you so if you manage your account well over the first
+        two years, you could pay less interest.
+        34.9% APR Representative (variable).</p>
+        <br><br><br>
+        <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Explore credit cards</button>
       </div>
     </div>
 
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/w3images/house3.jpg" alt="House" style="width:99%">
+        <div class="w3-display-topleft w3-black w3-padding">Home insurance + voucher</div>
+        <img src="assets/img/9.jpg" alt="House" style="width:99%">
+        <h3>Home insurance + voucher</h3>
+        <p>Get a buildings or contents quote by 26 April 2020
+        and take out your new policy within 90 days.
+        We’ll then give you a £25 shopping voucher to
+        spend at Amazon.co.uk, Argos or B&Q.</p>
+        <br><br><br>
+        <button href="pages/login.html" class="w3-bar-item w3-button offers-button">Explore home insurance</button>
       </div>
     </div>
   </div>
 
-  <!-- About Section -->
+  <!-- Important information Section -->
   <div class="w3-container w3-padding-32" id="about">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.
+    <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="text-align:center;">Important information</h2>
+    <br>
+    <p>1. Terms and conditions apply. You must have a current account with us, be aged 16 or over and have a mobile number to use the Barclays app.
+    </p>
+    <br>
+    <p>
+    2. Voucher offer terms, conditions and exclusions<br>
+    &nbsp; &nbsp; a) Restrictions apply, see www.amazon.co.uk.co.uk/gc-legal<br>
+    &nbsp; &nbsp; b) Argos e-Gift cards can be redeemed online and in stores.<br>
+    &nbsp; &nbsp; c) Restrictions apply, see www.diy.com/customer-support/policies/terms<br>
+    &nbsp; &nbsp; d) Only one voucher is available per household, in the UK or Isle of Man only.<br>
+    &nbsp; &nbsp; e) Valid for quotes between 24 February 2020 and 26 April 2020, where the policy starts within 90 days of the quote date.<br>
+    &nbsp; &nbsp; f) Quotes amended after 26 April 2020 are no longer eligible for the voucher offer.<br>
+    &nbsp; &nbsp; g) Offer available to new home insurance customers only whose policy includes buildings or contents cover, including landlord cover.<br>
+    &nbsp; &nbsp; h) Existing customers renewing their insurance won’t be eligible for the voucher.<br>
+    &nbsp; &nbsp; i) Offer excludes starter contents, personal items, bike, gadget, sports equipment, legal services and home emergency cover when bought on a standalone basis, and Premium Home Insurance.<br>
+    &nbsp; &nbsp; j) Policies cancelled with 14 days of the start date or with unpaid premiums won’t be eligible for the voucher.<br>
+    &nbsp; &nbsp; k) Within 30 days of the policy starting, customers will be contacted by email or post with details of how to select and receive their voucher.<br>
+    &nbsp; &nbsp; l) Offer may be withdrawn or amended at any time.<br>
+    &nbsp; &nbsp; m) The promoter is BonBank UK PLC, 15 William Place, London E35 9IV.<br>
     </p>
   </div>
-
-  <div class="w3-row-padding w3-grayscale">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="/w3images/team2.jpg" alt="John" style="width:100%">
-      <h3>John Doe</h3>
-      <p class="w3-opacity">CEO & Founder</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
-      <h3>Jane Doe</h3>
-      <p class="w3-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
-      <h3>Mike Ross</h3>
-      <p class="w3-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <img src="/w3images/team4.jpg" alt="Dan" style="width:100%">
-      <h3>Dan Star</h3>
-      <p class="w3-opacity">Architect</p>
-      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-    </div>
-  </div>
-
-  <!-- Contact Section -->
+ </div>
+  <!--
   <div class="w3-container w3-padding-32" id="contact">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
     <p>Lets get in touch and talk about your next project.</p>
@@ -162,33 +193,59 @@
       </button>
     </form>
   </div>
+  -->
+
   
-<!-- Image of location/map -->
+<!--
+ Image of location/map
 <div class="w3-container">
   <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
 </div>
+   Contact Section 
 
-<!-- End page content -->
-</div>
+ End page content -->
 
-<div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Login</h1>
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
 
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
   </form>
 </div>
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p>Barclays Bank UK PLC and Barclays Bank PLC are each authorised
+  by the Prudential Regulation Authority and regulated by <br> the
+  Financial Conduct Authority and the Prudential Regulation Authority.
+  <br><br>
+  Barclays Insurance Services Company Limited and Barclays Investment
+  Solutions Limited are each authorised and regulated by the
+  Financial Conduct Authority.
+  <br><br>
+  Registered office for all: BonBank UK PLC, 15 William Place, London E35 9IV.</p>
+  <img src="assets/img/footer_logo_1.jpg" class="w3-image" style="width:8%;">
+  <img src="assets/img/footer_logo_2.jpg" class="w3-image" style="width:8%;">
+
 </footer>
 
 </body>
