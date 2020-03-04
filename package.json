@@ -4,12 +4,14 @@
   "main": "main.ts",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "ng serve"
+    "postinstall": "ng build --aot -prod"
+    //"heroku-postinstall": "ng build -prod"
+
   },
   "private": true,
   "dependencies": {
