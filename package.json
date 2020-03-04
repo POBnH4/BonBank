@@ -1,6 +1,7 @@
 {
   "name": "bank",
   "version": "0.0.0",
+  "main": "main.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
