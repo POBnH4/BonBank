@@ -1,6 +1,6 @@
 {
   "name": "bank",
-  "version": "v10.19.0",
+  "version": "0.0.0",
   "main": "main.ts",
   "scripts": {
     "ng": "ng",
