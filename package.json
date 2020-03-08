@@ -1,9 +1,14 @@
 {
   "name": "bank",
   "version": "v10.19.0",
-  "main": "backend/server.js",
+  "main": "main.ts",
   "scripts": {
+    "ng": "ng",
     "start": "node backend/server.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
   },
   "private": true,
   "dependencies": {
