@@ -1,6 +1,12 @@
 //Install express server
 
+const http = require('http');
 const express = require('express');
+const session = require('express-session'); //npm install express-session
+const bodyParser = require('body-parser'); //npm install body-parser
+//const MONGO_CLIENT = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/";
+var app = express();
 const path = require('path');
 
 const app = express();
@@ -14,13 +20,6 @@ app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname + '../src/index.html'));
 });
 
-const http = require('http');
-const express = require('express');
-const session = require('express-session'); //npm install express-session
-const bodyParser = require('body-parser'); //npm install body-parser
-//const MONGO_CLIENT = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017/";
-var app = express();
 
 const hostname = '3.134.92.177';
 //const hostname = '127.0.0.1';
