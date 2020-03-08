@@ -13,10 +13,8 @@ const hostname = '3.134.92.177';
 const port = 8080;
 http.createServer(function (request, response){
   response.writeHead(200, {'Content-type': 'text/plain'});
-  response.end('Hello')
+  response.end('Hello');
 }).listen(port);
-
-app.get('/*', function(req,res) {
     
 //res.sendFile(path.join(__dirname + '../src/index.html'));
 //});
@@ -48,8 +46,10 @@ var db;
 
 //app.use(express.static("public"));
 
-app.get('/*', function(req,res) {
-    res.render('pages/index');
+
+app.get('/*', function(req,res){
+	res.render('../src/index.html');
 });
+
 
 ///////////////////////////////////////////////////////////////////
