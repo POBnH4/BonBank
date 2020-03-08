@@ -13,8 +13,10 @@ const hostname = '3.134.92.177';
 const port = 8080;
 http.createServer(function (request, response){
   response.writeHead(200, {'Content-type': 'text/plain'});
-  response.end('Hello');
+  response.end('Hello')
 }).listen(port);
+
+app.get('/*', function(req,res) {
     
 //res.sendFile(path.join(__dirname + '../src/index.html'));
 //});
@@ -31,25 +33,23 @@ app.use(bodyParser.urlencoded({
 
 var db;
 
-//app.use(session({secret: 'example'}));
+app.use(session({secret: 'example'}));
 
 //////////////- - - - - -MONGO- - - - - -//////////////////////////
 //Connection to MongoDB - sets the variable db as our database
-//MongoClient.connect(url, function(err, database) {
-//    if (err) throw err;
-//    db = database;
-//    app.listen(8080);
-//    console.log('Mongo listening on 8080');
-//});
+MongoClient.connect(url, function(err, database) {
+    if (err) throw err;
+    db = database;
+    app.listen(8080);
+    console.log('Mongo listening on 8080');
+});
 
 ///////////////- - - - - -END OF MONGO- - - - - -////////////////////////
 
 //app.use(express.static("public"));
 
-
-app.get('/*', function(req,res){
-	res.render('../src/index.html');
+app.get('/*', function(req,res) {
+    res.render('pages/index');
 });
-
 
 ///////////////////////////////////////////////////////////////////
