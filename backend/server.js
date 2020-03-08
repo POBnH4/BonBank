@@ -13,13 +13,13 @@ const hostname = '3.134.92.177';
 const port = 8080;
 http.createServer(function (request, response){
   response.writeHead(200, {'Content-type': 'text/plain'});
+  response.end('Hello')
 }).listen(port);
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname + '../src/index.html'));
-});
-
+//res.sendFile(path.join(__dirname + '../src/index.html'));
+//});
 
 //const hostname = '127.0.0.1';
 //const hostname = '18.216.27.105';
@@ -32,7 +32,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 var db;
-
 
 //app.use(session({secret: 'example'}));
 
