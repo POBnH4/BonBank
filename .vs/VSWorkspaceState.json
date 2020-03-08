@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\e2e",
+    "\\backend",
     "\\e2e\\src",
-    "\\src",
     "\\src\\app",
     "\\src\\assets",
     "\\src\\assets\\css",
@@ -11,6 +10,5 @@
     "\\src\\assets\\pages",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\assets\\pages\\contact.html",
   "PreviewInSolutionExplorer": false
 }
