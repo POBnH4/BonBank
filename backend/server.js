@@ -4,7 +4,7 @@ const http = require('http');
 const express = require('express');
 const session = require('express-session'); //npm install express-session
 const bodyParser = require('body-parser'); //npm install body-parser
-//const MONGO_CLIENT = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
 const path = require('path');
 
@@ -15,8 +15,6 @@ http.createServer(function (request, response){
   response.writeHead(200, {'Content-type': 'text/plain'});
   response.end('Hello')
 }).listen(port);
-
-app.get('/*', function(req,res) {
     
 //res.sendFile(path.join(__dirname + '../src/index.html'));
 //});
@@ -40,8 +38,8 @@ app.use(session({secret: 'example'}));
 MongoClient.connect(url, function(err, database) {
     if (err) throw err;
     db = database;
-    app.listen(8080);
-    console.log('Mongo listening on 8080');
+    app.listen(8090);
+    console.log('Mongo listening on 8090');
 });
 
 ///////////////- - - - - -END OF MONGO- - - - - -////////////////////////
