@@ -2,13 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\e2e\\src",
-    "\\src\\app",
-    "\\src\\assets",
+    "\\src",
     "\\src\\assets\\css",
     "\\src\\assets\\js",
-    "\\src\\assets\\pages",
-    "\\src\\environments"
+    "\\src\\assets\\pages"
   ],
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

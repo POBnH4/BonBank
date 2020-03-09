@@ -234,6 +234,36 @@
   </form>
 </div>
 
+<div id="registerModal" class="modal">
+  
+  <form class="modal-content animate" action="http://localhost:4200/assets/pages/profile.html" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('registerModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Name</b></label>
+      <input type="text" placeholder="Enter your name" name="uname" required>
+
+      <label for="uname"><b>E-mail</b></label>
+      <input type="text" placeholder="Enter your email" name="uname" required>
+
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter password" name="psw" required>
+        
+      <button type="submit" href="assets/pages/profile.html">Register</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
   <p>Barclays Bank UK PLC and Barclays Bank PLC are each authorised

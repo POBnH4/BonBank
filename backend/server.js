@@ -1,16 +1,18 @@
-//Install express server
+r
 
 const http = require('http');
-const express = require('express');
+const express = require('express'); //npm install express
 const session = require('express-session'); //npm install express-session
 const bodyParser = require('body-parser'); //npm install body-parser
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient; //npm install mongodb
 const url = "mongodb://localhost:27017/"; // localhost 8080 or 8090?
 const path = require('path');
-
 const app = express();
 const hostname = '3.134.92.177';
 const port = 8080;
+
+var db;
+
 http.createServer(function (request, response){
   response.writeHead(200, {'Content-type': 'text/plain'});
   response.end('Hello')
@@ -19,22 +21,25 @@ http.createServer(function (request, response){
 //res.sendFile(path.join(__dirname + '../src/index.html'));
 //});
 
-//const hostname = '127.0.0.1';
-//const hostname = '18.216.27.105';
-
 console.log(`Server running at http://${hostname}:${port}/`);
 
-// Node.js body parsing middleware
-app.use(bodyParser.urlencoded({
+
+app.use(bodyParser.urlencoded({ // Node.js body parsing middleware
     extended: true
 }));
 
-var db;
+
+
+
+//app.use(express.static("public"));
+
+app.get('/*', function(req,res) {
+    res.render('pages/index');
+});
 
 app.use(session({secret: 'example'}));
 
-//////////////- - - - - -MONGO- - - - - -//////////////////////////
-//Connection to MongoDB - sets the variable db as our database
+//- - - - - - - - - - - -MONGO- - - - - - - - - - - -//
 MongoClient.connect(url, function(err, database) {
     if (err) throw err;
     db = database;
@@ -85,12 +90,30 @@ app.post('/login', function(req,res){
     });
 });
 
-///////////////- - - - - -END OF MONGO- - - - - -////////////////////////
-
-//app.use(express.static("public"));
-
-app.get('/*', function(req,res) {
-    res.render('pages/index');
+app.post('/register', function(req,res) {
+    var name = req.body.name;
+    var email = req.body.email;
+    var username = req.body.username;
+    var pword = req.body.password;
+    var newUserData = {
+        "name": name,
+        "email": email,
+        "totalBalance": 0.0,
+        "username": username,
+        "password": pword,
+        "transactions": []
+    };
+    db.collection('users').findOne({"username":username}, function(err,result) {
+        if (err) throw err;
+        if (result) {
+            console.log("Username taken");
+            res.redirect('/');
+        }
+    });
+    db.collection('users').save(newUserData, function(err,result) {
+        if (err) throw err;
+        console.log(username + " saved to Database");
+        res.redirect('/');
+    });
 });
-
 ///////////////////////////////////////////////////////////////////
