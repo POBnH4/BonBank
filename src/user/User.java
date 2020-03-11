@@ -9,8 +9,14 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	private double total = 0.0;
+	private double bankAccount = 0.0;
+	private double crypto = 0.0;
+	private double savingAccount = 0.0;
 	private List<Double> transactions = new ArrayList<>();
+	private List<String> userTransactions = new ArrayList<>();
 
+	private final double BITCOIN_PRICE = 6125.59;
 	public User() {	}
 	
 	public User(String name, String email, String password) {
@@ -18,7 +24,7 @@ public class User {
 		this.setName(name);
 		this.setEmail(email);
 		this.setPassword(password);
-		this.setTransactions(transactions);
+		this.setTotal(this.getCrypto() + this.getBankAccount() + this.getSavingAccount());
 	}
 	
 	public User(UUID id, String name, String email, String password) { 
@@ -26,7 +32,7 @@ public class User {
 		this.setName(name);
 		this.setEmail(email);
 		this.setPassword(password);
-		this.setTransactions(transactions);
+		this.setTotal((this.getCrypto() * BITCOIN_PRICE) + this.getBankAccount() + this.getSavingAccount());
 	}
 	
 	@DynamoDBHashKey(attributeName="id")
@@ -55,6 +61,58 @@ public class User {
 		return this.transactions;
 	} 
 
+	@DynamoDBAttribute(attributeName="transactionsName")
+	public List<String> getUserTransactions() {
+		return userTransactions;
+	}
+
+	@DynamoDBAttribute(attributeName="savingAccount")
+	public double getSavingAccount() {
+		return savingAccount;
+	}
+	
+	@DynamoDBAttribute(attributeName="bankAccount")
+	public double getBankAccount() {
+		return bankAccount;
+	}
+
+	@DynamoDBAttribute(attributeName="cryptoAccount")
+	public double getCrypto() {
+		return crypto;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void addTransaction(double transaction) {
+		this.transactions.add(transaction);
+	}
+
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+
+	public void setBankAccount(double bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+
+	public void setCrypto(double crypto) {
+		this.crypto = crypto;
+	}
+
+
+	public void setSavingAccount(double savingAccount) {
+		this.savingAccount = savingAccount;
+	}
+
+
+	public void setUserTransactions(List<String> userTransactions) {
+		this.userTransactions = userTransactions;
+	}
+	
 	public void setId(UUID newId) {
 		this.id = newId; 
 	}
@@ -74,8 +132,6 @@ public class User {
 	public void setTransactions(List<Double> transactions) {
 		this.transactions = transactions;
 	}
-	
-	
 
 	
 }

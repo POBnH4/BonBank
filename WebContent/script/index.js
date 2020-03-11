@@ -1,6 +1,9 @@
 
+let baseURL = "api"; 
 var modal = document.getElementById('id01');
 var registerModal = document.getElementById('id02');
+
+var currentUserID = "";
 
 window.onclick = function(event) { // When the user clicks anywhere outside of the modal, close it
     if (event.target == modal) {
@@ -11,9 +14,6 @@ window.onclick = function(event) { // When the user clicks anywhere outside of t
     }
 }
 
-
-let baseURL = "api"; 
-
 try {
 	$(function() {
 		init();
@@ -22,51 +22,20 @@ try {
 	alert("*** jQuery not loaded. ***");
 }
 
-populateEmployees() // display all employees
-
-$(function() {
-	$('input[name="singlerange"]').daterangepicker({
-		singleDatePicker : true,
-		showDropdowns : true,
-		minYear : 1901,
-		maxYear : parseInt(moment().format('YYYY'), 10)
-	}, function(start, end, label) {
-		singleDate = start.format('MM-DD-YYYY');
-	});
-});
-
-$(function() {
-	$("#employeeDetailsDialog").dialog({
-		modal : true, // modal dialog to disable parent when dialog is active
-		autoOpen : false, // set autoOpen to false, hiding dialog after
-		title : "Employee Details",
-		minWidth : 250,
-		minHeight : 200
-	});
-	$("#openDialog").click(function() {
-		$("#forename").val("");
-		$("#surname").val(""); // clear city name text input
-		$("#dateOfBirth").val("");
-		$("#jobTitle").val("");
-		$("#qualificationTitle").val("");
-		$("#dateCompleted").val(""); // clear employee name text input
-		$("#dateExpiry").val(""); // clear employee name text input
-		$("#employeeDetailsDialog").dialog('open'); // open dialog box
-	});
-});
+//populateUsers() // display all Users
 
 function init() {
 
 	$("#refreshButton").click(function() {
-		populateEmployees();
+		populateUsers();
 	});
 
-	$("#updateEmployee").click(
+	$("#updateUser").click(
 			function() {
-				$("#Employees li .selected").each(
+				$("#Users li .selected").each(
 						function() {
-							console.log("Update Employee IN");
-							updateEmployee($(this).attr("id"), 
+							console.log("Update User IN");
+							updateUser($(this).attr("id"), 
 									$(this).attr("forename"),
 									$(this).attr("surname"),
 									$(this).attr("dateOfBirth"),
@@ -76,68 +45,49 @@ function init() {
 			});
 }
 
-function cancelEmployee() {
-	$("#employeeDetailsDialog").dialog("close");
+function cancelUser() {
+	$("#UserDetailsDialog").dialog("close");
 }
 
-function cancelEmployeeFunc() {
+function cancelUserFunc() {
 	$("#updateDeleteDialog").dialog("close");
 }
 
-$(function() {
-	$("#updateDeleteDialog").dialog({
-		modal : true, // modal dialog to disable parent when dialog is active
-		autoOpen : false, // set autoOpen to false, hiding dialog after
-		title : "Employee Details",
-		minWidth : 250,
-		minHeight : 200
-	});
-	$("#employees").click(function() {
-		$("#updateDeleteDialog").dialog('open'); // open dialog box
-		retrieveOneEmployee()
-	});
-});
 
-function onClickDelete() {
-	let ol = document.getElementById("employees")
-	let items = ol.getElementsByTagName("li");
+function deleteUser() {
 	for (let i = 0; i < items.length; i++) {
 		if (items[i].classList[0] == "selected") {
-			deleteEmployee(items[i].id);
+			deleteUser(items[i].id);
 			console.log("in the delete click")
 		}
 	}
 }
 
 function onClickUpdate() {
-	let ol = document.getElementById("employees")
+	let ol = document.getElementById("Users")
 	let items = ol.getElementsByTagName("li");
 	for (let i = 0; i < items.length; i++) {
 		if (items[i].classList[0] == "selected") {
-			updateEmployee(items[i].id);
+			updateUser(items[i].id);
 			console.log("in the update click")
 		}
 	}
 }
 
-function employeeClick(id) {
-	$("#employees li").removeClass("selected");
-	$("#" + id).addClass("selected");
-}
 
-function deleteEmployee(id) {
+function deleteUser(id) {
 	console.log("in the delete method")
 
-	let url = baseURL + "/employee/delete/" + id;
+	let url = baseURL + "/user/delete/" + currentUserID;
 	let settings = {
 		type : "DELETE"
 	};
 	$.ajax(url, settings);
-	$("#updateDeleteDialog").dialog("close");
 
+	//redirect to homepage;
 }
 
-function clearSaveEmployeeValues() {
+function clearSaveUserValues() {
 	$("#dateOfBirth").val("");
 	$("#surname").val("");
 	$("#forename").val("");
@@ -147,7 +97,7 @@ function clearSaveEmployeeValues() {
 	$("#expiryDate").val("");
 }
 
-function clearUpdatedEmployeeValues() {
+function clearUpdatedUserValues() {
 	$("#newDateOfBirth").val("");
 	$("#newSurname").val("");
 	$("#newForename").val("");
@@ -157,122 +107,108 @@ function clearUpdatedEmployeeValues() {
 	$("#newExpiryDate").val("");
 }
 
-// save an Employee using the Employee service, given its position
-function updateEmployee(id) {
-	let forename = $("#newForename").val();
-	let surname = $("#newSurname").val();
-	let dateOfBirth = $("#newDateOfBirth").val().split("/").join("-");
-	let jobTitle = $("#newJobTitle").val();
-	// let qualificationTitle = $("#qualificationTitle").val();
-	// let dateCompleted = $("#dateCompleted").val().split("/").join("-");
-	// let expiryDate = $("#expiryDate").val().split("/").join("-");
-	// let qualification = new Qualification(qualificationTitle, dateCompleted,
-	// expiryDate);
+// save an User using the User service, given its position
+function updateUser() {
+	let name = $("#newName").val();
+	let email = $("#newEmail").val();
+	let password = $("#newPassword").val();
 
-	let url = baseURL + "/employee/update/" + id + "/forename=" + forename
-			+ "/surname=" + surname + "/dateOfBirth=" + dateOfBirth + "/jobTitle="
-			+ jobTitle;// + "/qualification=" + qualification;
+	let url = baseURL + "/user/update/" + currentUserID + "/name=" + name
+			+ "/email=" + email + "/password=" + password;
 	let settings = {
 		type : "PUT"
 	};
 	console.log("update url = " + url);
-
 	$.ajax(url, settings);
-
-	let ol = document.getElementById("employees");
-	let items = ol.getElementsByTagName("li");
-	for (let i = 0; i < items.length; i++) {
-		if (items[i].classList[0] == "selected") {
-			items[i].forename = forename;
-			items[i].surname = surname;
-			items[i].dateOfBirth = dateOfBirth;
-			items[i].jobTitle = jobTitle;
-		}
-	}
-	clearUpdatedEmployeeValues()
-	$("#updateDeleteDialog").dialog("close");
-	populateEmployees()
+//	let ol = document.getElementById("Users");
+//	let items = ol.getElementsByTagName("li");
+//	for (let i = 0; i < items.length; i++) {
+//		if (items[i].classList[0] == "selected") {
+//			items[i].forename = forename;
+//			items[i].surname = surname;
+//			items[i].dateOfBirth = dateOfBirth;
+//			items[i].jobTitle = jobTitle;
+//		}
+//	}
+	//clearUpdatedUserValues()
+	//populateUsers()
 }
 
-// save an Employee using the Employee service, given its position
-function saveEmployee() {
+// save an User using the User service, given its position
+function saveUser() {
 
-	let forename = $("#forename").val(); 
-	let surname = $("#surname").val();
-	let dateOfBirth = $("#dateOfBirth").val();
-	let jobTitle = $("#jobTitle").val();
-	//let qualificationTitle = $("#qualificationTitle").val();
-	//let dateCompleted = $("#dateCompleted").val();
-	//let expiryDate = $("#expiryDate").val();
+	let name = $("#registerName").val(); 
+	let email = $("#registerEmail").val();
+	let password = $("#registerPassword").val();
+
 	let data = {
-		"forename" : forename,
-		"surname" : surname,
-		"dateOfBirth" : dateOfBirth,
-		"jobTitle" : jobTitle//,
-		//"qualificationTitle" : qualificationTitle,
-		//"dateCompleted" : dateCompleted,
-		//"expiryDate" : expiryDate
+		"name" : name,
+		"password" : password,
+		"email" : email
 	};
 
-	let url = baseURL + "/employee/add";
+	let url = baseURL + "/user/add";
 	
 	console.log("Saving");
 	
 	$.post(url, data, function() {
-		alert("Employee saved!");
+		alert("User saved!");
 		
-		clearSaveEmployeeValues();
-		cancelEmployeeFunc();
-		populateEmployees();
+		$().load("pages/profile.html") // TODO load page profile.html!!!!
 	});
-
 }
 
-// retrieve all Employees from Employee service and populate list
 
-function retrieveOneEmployee() {
-	let url = baseURL + "/employee/get=" + selectedID;
+function logout(){
+	// go to main page index.html;
+}
+// retrieve all Users from User service and populate list
+
+function retrieveOneUser() {
+	let url = baseURL + "/user/get=" + selectedID;
 
 	console.log("URL is: " + url);
 	// use jQuery shorthand AJAX function to get JSON data
-	$.getJSON(url, function(employee) {
-		$("#newforename").val(employee["forename"]);
-		$("#newSurname").val(employee["surname"]);
-		$("#newDateOfBirth").val(employee["dateOfBirth"]);
-		$("#newJobTitle").val(employee["jobTitle"]);
-		$("#newQualificationTitle").val(employee["qualificationTitle"]);
-		$("#newDateCompleted").val(employee["dateCompleted"]);
-		$("#newExpiryDate").val(employee["expiryDate"]);
-		document.getElementById("newForename").value = employee["forename"];
-		console.log("new " + $("#newforename").val());
+	$.getJSON(url, function(user) {
+		$("#name").val(user["name"]);
+		$("#newSurname").val(user["email"]);
+		var transactions = user["transactions"];
+		var transactionsName = user["transactionsName"]
+		$("#savingAccount").val(user["savingAccount"]);
+		$("#bankAccount").val(user["bankAccount"]);
+		$("#cryptoAccount").val(user["cryptoAccount"]);
+		var total = $("#savingAccount").val() + $("#bankAccount").val() + $("#cryptoAccount").val();
+		$("#total").val(user[total]);
+		//document.getElementById("newForename").value = user["forename"];
+		//console.log("new " + $("#newforename").val());
 	});
 }
 
-function populateEmployees() {
+function populateUsers() {
 
-	let url = baseURL + "/employee/search";
+	let url = baseURL + "/user/search";
 
 	console.log("URL ::" + url);
 	// use jQuery shorthand AJAX function to get JSON data
-	$.getJSON(url, function(employees) {
-		$("#employees").empty(); // find Employee list and remove its
+	$.getJSON(url, function(Users) {
+		$("#Users").empty(); // find User list and remove its
 		// children
 		let currentForename = $("#searchName").val();
-		console.log("in Employees get json " + url);
+		console.log("in Users get json " + url);
 		
-		for ( var i in employees) {
-			let employee = employees[i]; // get 1 Employee from the
-			let id = employee["id"];
-			let forename = employee["forename"];
-			let surname = employee["surname"];
-			let dateOfBirth = employee["dateOfBirth"];
-			let jobTitle = employee["jobTitle"];
-			let qualificationTitle = employee["qualificationTitle"];
-			let dateCompleted = employee["dateCompleted"];
-			let expiryDate = employee["expiryDate"];
+		for ( var i in Users) {
+			let User = Users[i]; // get 1 User from the
+			let id = User["id"];
+			let forename = User["forename"];
+			let surname = User["surname"];
+			let dateOfBirth = User["dateOfBirth"];
+			let jobTitle = User["jobTitle"];
+			let qualificationTitle = User["qualificationTitle"];
+			let dateCompleted = User["dateCompleted"];
+			let expiryDate = User["expiryDate"];
 			
 			let lotsOfTabs = "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" // &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-			// compose HTML of a list item using the Employee variables.
+			// compose HTML of a list item using the User variables.
 			let htmlCode = "<li id =" + id + ">" + forename + lotsOfTabs + 
 					lotsOfTabs + surname + lotsOfTabs + 
 					lotsOfTabs + dateOfBirth + lotsOfTabs +
@@ -281,13 +217,13 @@ function populateEmployees() {
 					lotsOfTabs + dateCompleted + lotsOfTabs +
 					lotsOfTabs + expiryDate + lotsOfTabs + "</li><br>";
 
-			$("#employees").append(htmlCode);
+			$("#Users").append(htmlCode);
 		}
 
-		// look for all list items (i.e. Employees), set their click handler
-		$("#employees li").click(function() {
+		// look for all list items (i.e. Users), set their click handler
+		$("#Users li").click(function() {
 			console.log("id is " + $(this).attr("id"));
-			employeeClick($(this).attr("id"));
+			UserClick($(this).attr("id"));
 			selectedID = $(this).attr("id");
 		});
 	});

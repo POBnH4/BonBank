@@ -5,10 +5,49 @@
   <title>BonBank</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+
+	<link rel="stylesheet"
+	href="https://formden.com/static/cdn/bootstrap-iso.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="icon" href="img/bankLogo.png">
+<link
+	href="https://www.cssscript.com/wp-includes/css/sticky.css?20190923"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" 
+	href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- *** Load the jQuery and jQueryUI libraries here. *** -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <script src="script/index.js"></script>
 
 </head>
@@ -182,14 +221,14 @@
  </div>
 
 <div id="id01" class="modal">
-  <form class="modal-content animate" action="/login" method="POST">
+  <form class="modal-content animate">
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input id="loginName" type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id="loginPassword" type="password" placeholder="Enter Password" name="psw" required>
         
       <button type="submit" href="pages/profile.html">Login</button>
       <label>
@@ -204,24 +243,21 @@
   </form>
 </div>
 
-<div id="id02" class="modal">
-  <form class="modal-content animate" action="/register" method="POST">
+<div id="id02" class="modal" method="POST">
+  <form class="modal-content animate">
     <div class="container">
       <h2 class="boxtitle" style= "text-align:center;">Register</h2>
 
       <label for="uname"><b>Name</b></label>
-      <input type="text" placeholder="Enter your name" name="uname" required>
+      <input id="registerName" type="text" placeholder="Enter your name" name="uname" required>
 
       <label for="uname"><b>E-mail</b></label>
-      <input type="text" placeholder="Enter your email" name="uname" required>
-
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter username" name="uname" required>
+      <input id="registerEmail" type="text" placeholder="Enter your email" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter password" name="psw" required>
+      <input id="registerPassword" type="password" placeholder="Enter password" name="psw" required>
         
-      <button type="submit" href="pages/profile.html">Register</button>
+      <button type="submit" onclick = "saveUser()">Register</button>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
