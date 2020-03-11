@@ -95,6 +95,7 @@ app.post('/register', function(req,res) {
     var email = req.body.email;
     var username = req.body.username;
     var pword = req.body.password;
+    console.log(name " " + email)
     var newUserData = {
         "name": name,
         "email": email,
@@ -113,7 +114,10 @@ app.post('/register', function(req,res) {
     db.collection('users').save(newUserData, function(err,result) {
         if (err) throw err;
         console.log(username + " saved to Database");
-        res.redirect('/');
     });
+    return res.status(200).JSON({
+      message: "User registered!";
+      res.redirect('/');
+    })
 });
 ///////////////////////////////////////////////////////////////////

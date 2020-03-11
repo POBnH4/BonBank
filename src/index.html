@@ -11,6 +11,7 @@
   <link rel="icon" href="assets/img/bankLogo.png">
 
   <script src="assets/js/index.js"></script>
+  <app-root></app-root>
 
 </head>
 
@@ -21,8 +22,8 @@
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small" style="margin: 1% 0 0 0;">
       <button class="w3-bar-item w3-button open-button" onclick="document.getElementById('id01').style.display='block'" style="width:7%; height:4%;">Login</button>
-      <a href="assets/pages/register.html" class="w3-bar-item w3-button">Register</a>
-      <a href="assets/pages/contact.html" class="w3-bar-item w3-button">Contact us</a>
+      <button href="" class="w3-bar-item w3-button " onclick="document.getElementById('id02').style.display='block'" >Register</a>
+      <button href="assets/pages/contact.html" class="w3-bar-item w3-button">Contact us</a>
     </div>
   </div>
 </div>
@@ -208,11 +209,7 @@
  End page content -->
 
 <div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="http://localhost:4200/assets/pages/profile.html" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
+  <form class="modal-content animate" action="/login" method="POST">
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
@@ -234,14 +231,11 @@
   </form>
 </div>
 
-<div id="registerModal" class="modal">
-  
-  <form class="modal-content animate" action="http://localhost:4200/assets/pages/profile.html" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('registerModal').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
-
+<div id="id02" class="modal">
+  <form class="modal-content animate" action="/register" method="POST">
     <div class="container">
+      <h2 class="boxtitle" style= "text-align:center;">Register</h2>
+
       <label for="uname"><b>Name</b></label>
       <input type="text" placeholder="Enter your name" name="uname" required>
 
@@ -258,8 +252,7 @@
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>
