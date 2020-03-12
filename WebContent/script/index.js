@@ -164,14 +164,18 @@ function logout(){
 }
 // retrieve all Users from User service and populate list
 
-function retrieveOneUser() {
-	let url = baseURL + "/user/get=" + selectedID;
+function login(){
+	
+	//TODO encrypt PASSWORD!!!!!!!!
+	let email = $('#loginEmail').val();
+	let password = $('#loginPassword').val();
 
-	console.log("URL is: " + url);
+	let url = baseURL + "/user/email=" + email + "/pws=" + password;
+	
 	// use jQuery shorthand AJAX function to get JSON data
 	$.getJSON(url, function(user) {
 		$("#name").val(user["name"]);
-		$("#newSurname").val(user["email"]);
+		$("#email").val(user["email"]);
 		var transactions = user["transactions"];
 		var transactionsName = user["transactionsName"]
 		$("#savingAccount").val(user["savingAccount"]);
@@ -181,6 +185,7 @@ function retrieveOneUser() {
 		$("#total").val(user[total]);
 		//document.getElementById("newForename").value = user["forename"];
 		//console.log("new " + $("#newforename").val());
+		//TODO redirect to profile page
 	});
 }
 

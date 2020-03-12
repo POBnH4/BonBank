@@ -29,14 +29,18 @@ public class UserResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/get={id}")
-	public User getOneEmployee(@PathParam("id") UUID id) {
+	@Path("/user/username={username}/pws={password}")
+	public User getOneEmployee(@PathParam("email") String email, @PathParam("password") String password) {
 		DynamoDBMapper mapper = DynamoDBUtil.getDBMapper(Config.REGION, Config.LOCAL_ENDPOINT);		
-		System.out.println("In get one user");
-		User user = mapper.load(User.class, id);
-		System.out.println(user.getName());
-		if (user == null) throw new WebApplicationException(404);
-		return user;
+		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+		List<User> users = mapper.scan(User.class, scanExpression);
+		//if (user == null) throw new WebApplicationException(404);
+		for(int i = 0; i < users.size(); i++) {
+			if(users.get(i).getEmail() == email && users.get(i).getPassword() == password) {
+				return users.get(i);
+			}
+		}
+		return null;
 	}
 
 	@PUT
