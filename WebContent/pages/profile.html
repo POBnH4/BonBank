@@ -11,7 +11,46 @@
 <link rel="stylesheet" href="css/index.css">
 
 <script src="js/index.js"></script>
+<script src="script/index.js"></script>
+	<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 
+	<link rel="stylesheet"
+	href="https://formden.com/static/cdn/bootstrap-iso.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" href="img/bankLogo.png">
+<link
+	href="https://www.cssscript.com/wp-includes/css/sticky.css?20190923"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" 
+	href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- *** Load the jQuery and jQueryUI libraries here. *** -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script src="script/index.js"></script>
 <body class="w3-light-grey">
 
 <!-- Top container -->
@@ -19,6 +58,7 @@
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right"><b>BonBank</b></span>
 </div>
+  <button class="w3-bar-item w3-button open-button" onclick="document.getElementById('id03').style.display='block'" style="width:7%; height:4%;"><i class="fa fa-arrows-v"></i>Transfer</button>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -172,4 +212,28 @@
     </div>
   </div>
 </body>
+
+  <div id="id03" class="modal">
+  <form class="modal-content animate">
+    <div class="container">
+      <h2 class="boxtitle" style= "text-align:center;">Transfer</h2>
+
+      <label for="uname"><b>E-mail</b></label>
+      <input id="transferEmail" type="text" placeholder="Enter your email" name="uname" required>
+        
+      <label for="uname"><b>Bank Account</b></label>
+      <input id="bankNumber" type="number" placeholder="Enter a number" required>
+      
+      <label for="uname"><b>Crypto</b></label>
+      <input id="cryptoNumber" type="number" placeholder="Enter a number" required>
+        
+      <button type="submit" onclick = "transferMoney()">Send</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  	</form>
+	</div>
+
 </html>

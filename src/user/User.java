@@ -19,19 +19,21 @@ public class User {
 	private final double BITCOIN_PRICE = 6125.59;
 	public User() {	}
 	
-	public User(String name, String email, String password) {
+	public User(String name, String email, String password, double bankAccount) {
 		this.setId(UUID.randomUUID());
 		this.setName(name);
 		this.setEmail(email);
 		this.setPassword(password);
+		this.setBankAccount(bankAccount);
 		this.setTotal(this.getCrypto() + this.getBankAccount() + this.getSavingAccount());
 	}
 	
-	public User(UUID id, String name, String email, String password) { 
+	public User(UUID id, String name, String email, String password, double bankAccount) { 
 		this.setId(id);
 		this.setName(name);
 		this.setEmail(email);
 		this.setPassword(password);
+		this.setBankAccount(bankAccount);
 		this.setTotal((this.getCrypto() * BITCOIN_PRICE) + this.getBankAccount() + this.getSavingAccount());
 	}
 	

@@ -46,8 +46,6 @@
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <script src="script/index.js"></script>
 
 </head>
@@ -59,8 +57,8 @@
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small" style="margin: 1% 0 0 0;">
       <button class="w3-bar-item w3-button open-button" onclick="document.getElementById('id01').style.display='block'" style="width:7%; height:4%;">Login</button>
-      <button class="w3-bar-item w3-button " onclick="document.getElementById('id02').style.display='block'" >Register</a>
-      <button href="pages/contact.html" class="w3-bar-item w3-button">Contact us</a>
+      <button class="w3-bar-item w3-button " onclick="document.getElementById('id02').style.display='block'" >Register</button>
+      <button href="pages/contact.html" class="w3-bar-item w3-button">Contact us</button>
     </div>
   </div>
 </div>
@@ -225,7 +223,7 @@
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input id="loginName" type="text" placeholder="Enter Username" name="uname" required>
+      <input id="loginEmail" type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>s
       <input id="loginPassword" type="password" placeholder="Enter Password" name="psw" required>
@@ -256,6 +254,9 @@
 
       <label for="psw"><b>Password</b></label>
       <input id="registerPassword" type="password" placeholder="Enter password" name="psw" required>
+        
+      <label for="psw"><b>Bank Account</b></label>
+      <input id="bankAccount" type="number" placeholder="Enter a number" required>
         
       <button type="submit" onclick = "saveUser()">Register</button>
     </div>

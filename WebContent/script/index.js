@@ -2,6 +2,7 @@
 let baseURL = "api"; 
 var modal = document.getElementById('id01');
 var registerModal = document.getElementById('id02');
+var transferModal = document.getElementById('id03');
 
 var currentUserID = "";
 
@@ -11,6 +12,9 @@ window.onclick = function(event) { // When the user clicks anywhere outside of t
     }
     if (event.target == registerModal) {
         registerModal.style.display = "none";
+    }
+    if(event.target == transferModal){
+    	transferModal.style.display = "none";
     }
 }
 
@@ -140,11 +144,13 @@ function saveUser() {
 	let name = $("#registerName").val(); 
 	let email = $("#registerEmail").val();
 	let password = $("#registerPassword").val();
-
+	let bankAccount = $("#bankAccount").val();
+	
 	let data = {
 		"name" : name,
 		"password" : password,
-		"email" : email
+		"email" : email,
+		"bankAccount" : bankAccount
 	};
 
 	let url = baseURL + "/user/add";
@@ -188,6 +194,22 @@ function login(){
 		//TODO redirect to profile page
 	});
 }
+function transferMoney(){
+	let email = $("#transferEmail").val();
+	let bankAccount = $("#bankNumber").val();
+	let crypto = $("#cryptoNumber").val();
+
+	let url = baseURL + "/user/transfer/email=" + email 
+					  + "/bankNumber=" + bankAccount 
+					  + "/crypto=" + crypto;
+	let settings = {
+		type : "PUT"
+	};
+	console.log("update url = " + url);
+	$.ajax(url, settings);
+
+}
+
 
 function populateUsers() {
 
@@ -196,11 +218,9 @@ function populateUsers() {
 	console.log("URL ::" + url);
 	// use jQuery shorthand AJAX function to get JSON data
 	$.getJSON(url, function(Users) {
-		$("#Users").empty(); // find User list and remove its
-		// children
+		//$("#Users").empty(); // find User list and remove its children
 		let currentForename = $("#searchName").val();
 		console.log("in Users get json " + url);
-		
 		for ( var i in Users) {
 			let User = Users[i]; // get 1 User from the
 			let id = User["id"];
@@ -224,6 +244,17 @@ function populateUsers() {
 
 			$("#Users").append(htmlCode);
 		}
+		
+		
+//		function productsAdd() {
+//			  $("#productTable tbody").append(
+//			      "<tr>" +
+//			        "<td>My First Video</td>" +
+//			        "<td>6/11/2015</td>" +
+//			        "<td>www.pluralsight.com</td>" +
+//			      "</tr>"
+//			  );
+//			}
 
 		// look for all list items (i.e. Users), set their click handler
 		$("#Users li").click(function() {
