@@ -29,24 +29,31 @@ public class UserResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/user/email={email}/pws={password}")
-	public User getOneEmployee(@PathParam("email") String email, @PathParam("password") String password) {
+	@Path("/email={email}/pws={password}")
+	public User getOneUser(@PathParam("email") String email, @PathParam("password") String password) {
 		DynamoDBMapper mapper = DynamoDBUtil.getDBMapper(Config.REGION, Config.LOCAL_ENDPOINT);		
 		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
 		List<User> users = mapper.scan(User.class, scanExpression);
-		//if (user == null) throw new WebApplicationException(404);
+		if (users == null) throw new WebApplicationException(404);
+		User resultUser = null;
 		for(int i = 0; i < users.size(); i++) {
-			if(users.get(i).getEmail() == email && users.get(i).getPassword() == password) {
-				return users.get(i);
+			if(users.get(i).getEmail().equals(email) && users.get(i).getPassword().equals(password)) {
+				System.out.println("User found");
+				resultUser = users.get(i);
+				break;
 			}
 		}
-		return null;
+		if(resultUser.equals(null)) {
+			System.out.println("User not found!");
+		}
+		System.out.println("User: " + resultUser.getEmail() + " : " + resultUser.getPassword());
+		return resultUser;
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/user/transfer/email={email}/money={bankAccount}/crypto={crypto}")
-	public Response updateEmployee(@PathParam("email") String email, @PathParam("bankAccount") double bankAccount,
+	@Path("/transfer/email={email}/money={bankAccount}/crypto={crypto}")
+	public Response updateUser(@PathParam("email") String email, @PathParam("bankAccount") double bankAccount,
 			@PathParam("crypto") double crypto) {
 		DynamoDBMapper mapper = DynamoDBUtil.getDBMapper(Config.REGION, Config.LOCAL_ENDPOINT);
 		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
@@ -64,7 +71,7 @@ public class UserResource {
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/update/{id}/name={name}/email={email}/password={password}/bankAccount={bankAccount}")
-	public Response updateEmployee(@PathParam("id") UUID id, @PathParam("name") String name,
+	public Response updateUser(@PathParam("id") UUID id, @PathParam("name") String name,
 			@PathParam("email") String email, @PathParam("password") String password, @PathParam("bankAccount") double bankAccount) {
 		DynamoDBMapper mapper = DynamoDBUtil.getDBMapper(Config.REGION, Config.LOCAL_ENDPOINT);
 		User user = mapper.load(User.class, id);
@@ -92,7 +99,7 @@ public class UserResource {
 
 	@Path("/delete/{id}")
 	@DELETE
-	public Response deleteOneEmployee(@PathParam("id") UUID id) {
+	public Response deleteOneUser(@PathParam("id") UUID id) {
 		DynamoDBMapper mapper = DynamoDBUtil.getDBMapper(Config.REGION, Config.LOCAL_ENDPOINT);
 		User user = mapper.load(User.class, id);
 		if (user == null) throw new WebApplicationException(404);

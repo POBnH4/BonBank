@@ -28,6 +28,44 @@ try {
 
 //populateUsers() // display all Users
 
+//$("#loginForm").submit(function(event) {
+//
+//	  //TODO encrypt PASSWORD!!!!!!!!
+//	  let email = $('#loginEmail').val();
+//	  let password = $('#loginPassword').val();
+//
+//	  let url = baseURL + "/user/email=" + email + "/pws=" + password;
+//	  /* stop form from submitting normally */
+//	  event.preventDefault();
+//
+//	  window.location.href = 'https://w3docs.com';
+//	  
+//	  // use jQuery shorthand AJAX function to get JSON data
+//	  var sending = $.getJSON(url, function(user) {
+//			console.log("inside login json")
+//			window.location.href = "http://localhost:8080/BBank/pages/profile.html"; // TODO MIGHT HAVE TO UPDATE IN AWS
+//			$("#name").val(user["name"]);
+//			$("#email").val(user["email"]);
+//			var transactions = user["transactions"];
+//			var transactionsName = user["transactionsName"]
+//			$("#savingAccount").val(user["savingAccount"]);
+//			$("#bankAccount").val(user["bankAccount"]);
+//			$("#cryptoAccount").val(user["cryptoAccount"]);
+//			var total = $("#savingAccount").val() + $("#bankAccount").val() + $("#cryptoAccount").val();
+//			$("#total").val(user[total]);
+//			//document.getElementById("newForename").value = user["forename"];
+//			//console.log("new " + $("#newforename").val());
+//			//TODO redirect to profile page
+//		});
+//
+//	  /* Alerts the results */
+//	  sending.done(function( data ) {
+//	    alert('success');
+//	  });
+//});
+
+
+
 function init() {
 
 	$("#refreshButton").click(function() {
@@ -152,6 +190,7 @@ function saveUser() {
 		"email" : email,
 		"bankAccount" : bankAccount
 	};
+	alert("SAVED");
 
 	let url = baseURL + "/user/add";
 	
@@ -171,15 +210,17 @@ function logout(){
 // retrieve all Users from User service and populate list
 
 function login(){
+
+	console.log("inside login")
 	
 	//TODO encrypt PASSWORD!!!!!!!!
 	let email = $('#loginEmail').val();
 	let password = $('#loginPassword').val();
-
 	let url = baseURL + "/user/email=" + email + "/pws=" + password;
 	
 	// use jQuery shorthand AJAX function to get JSON data
 	$.getJSON(url, function(user) {
+		console.log("inside login json")
 		$("#name").val(user["name"]);
 		$("#email").val(user["email"]);
 		var transactions = user["transactions"];
@@ -189,10 +230,17 @@ function login(){
 		$("#cryptoAccount").val(user["cryptoAccount"]);
 		var total = $("#savingAccount").val() + $("#bankAccount").val() + $("#cryptoAccount").val();
 		$("#total").val(user[total]);
-		//document.getElementById("newForename").value = user["forename"];
-		//console.log("new " + $("#newforename").val());
 		//TODO redirect to profile page
-	});
+		console.log("user stuff " + user["name"] + user["email"])
+	}).done(function() {
+	    console.log("second success");
+	  })
+	  .fail(function(e) {
+	    console.log("error");
+	  })
+	  .always(function() {
+	    console.log("complete");
+	  });
 }
 function transferMoney(){
 	let email = $("#transferEmail").val();
@@ -200,7 +248,7 @@ function transferMoney(){
 	let crypto = $("#cryptoNumber").val();
 
 	let url = baseURL + "/user/transfer/email=" + email 
-					  + "/bankNumber=" + bankAccount 
+					  + "/money=" + bankAccount 
 					  + "/crypto=" + crypto;
 	let settings = {
 		type : "PUT"

@@ -218,20 +218,16 @@
   </div>
  </div>
 
-<div id="id01" class="modal">
-  <form class="modal-content animate">
-
+<div id="id01" class="modal" >
+  <form id="loginForm" class="modal-content animate">
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input id="loginEmail" type="text" placeholder="Enter Username" name="uname" required>
+      <label for="uname"><b>Email</b></label>
+      <input id="loginEmail" type="text" placeholder="Enter Username" required>
 
       <label for="psw"><b>Password</b></label>s
-      <input id="loginPassword" type="password" placeholder="Enter Password" name="psw" required>
+      <input id="loginPassword" type="password" placeholder="Enter Password" required>
         
-      <button type="submit" onclick="login()")>Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+      <button type="submit" onclick="login()">Login</button>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -254,10 +250,14 @@
 
       <label for="psw"><b>Password</b></label>
       <input id="registerPassword" type="password" placeholder="Enter password" name="psw" required>
-        
-      <label for="psw"><b>Bank Account</b></label>
+      
+      <br><br>
+      
+      <label for="uname"><b>Bank Account</b></label>
       <input id="bankAccount" type="number" placeholder="Enter a number" required>
-        
+      
+      <br><br>
+      
       <button type="submit" onclick = "saveUser()">Register</button>
     </div>
 
