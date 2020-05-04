@@ -12,6 +12,8 @@ import aws.util.*;
 @Path("/user")
 public class UserResource {
 
+	private User aUser;
+	
 	@POST
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/add")
@@ -39,29 +41,49 @@ public class UserResource {
 		for(int i = 0; i < users.size(); i++) {
 			if(users.get(i).getEmail().equals(email) && users.get(i).getPassword().equals(password)) {
 				System.out.println("User found");
-				resultUser = users.get(i);
-				break;
+				this.aUser = users.get(i);
+				return users.get(i);
 			}
 		}
-		if(resultUser.equals(null)) {
-			System.out.println("User not found!");
-		}
-		System.out.println("User: " + resultUser.getEmail() + " : " + resultUser.getPassword());
+		System.out.println("User not found!");
 		return resultUser;
 	}
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/transfer/email={email}/money={bankAccount}/crypto={crypto}")
+	@Path("/transfer/email={email}/money={bankAccount}/crypto={crypto}/from={fromUser}")
 	public Response updateUser(@PathParam("email") String email, @PathParam("bankAccount") double bankAccount,
-			@PathParam("crypto") double crypto) {
+			@PathParam("crypto") double crypto, @PathParam("fromUser") String fromUser) {
 		DynamoDBMapper mapper = DynamoDBUtil.getDBMapper(Config.REGION, Config.LOCAL_ENDPOINT);
 		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
 		List<User> result = mapper.scan(User.class, scanExpression);
+		final double bitcoinPrice = 7165.22;
 		for(int i = 0; i < result.size(); i++) {
 			if(result.get(i).getEmail().equals(email)){
-				result.get(i).setBankAccount(result.get(i).getBankAccount() + bankAccount);
-				result.get(i).setCrypto(result.get(i).getCrypto() + crypto);
+				User newUser = result.get(i);
+				newUser.setBankAccount(result.get(i).getBankAccount() + bankAccount);
+				newUser.setCrypto(result.get(i).getCrypto() + crypto);
+				newUser.setTotal(newUser.getTotal() + bankAccount + (crypto * bitcoinPrice));
+				newUser.addTransaction(bankAccount);
+				newUser.addUserTransaction(fromUser);
+				newUser.addTransaction(crypto);
+				newUser.addUserTransaction(fromUser);
+				mapper.delete(result.get(i));
+				mapper.save(newUser);
+				for(int j = 0; j < result.size(); j++) {
+					if(result.get(i).getEmail().equals(fromUser)){
+						User sendingUser = result.get(j);
+						sendingUser.setBankAccount(result.get(j).getBankAccount() - bankAccount);
+						sendingUser.setCrypto(result.get(j).getCrypto() - crypto);
+						sendingUser.setTotal(newUser.getTotal() - bankAccount - (crypto * bitcoinPrice));
+						sendingUser.addTransaction(-bankAccount);
+						sendingUser.addUserTransaction(email);
+						sendingUser.addTransaction(-crypto);
+						sendingUser.addUserTransaction(email);
+						mapper.delete(result.get(j));
+						mapper.save(sendingUser);
+					}
+				}
 				return Response.status(201).entity("Money Received").build();
 			}
 		}
@@ -97,6 +119,13 @@ public class UserResource {
 		return finalResult;
 	}
 
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/userGet")
+	public User getUserData() {
+		return this.aUser;
+	}
+	
 	@Path("/delete/{id}")
 	@DELETE
 	public Response deleteOneUser(@PathParam("id") UUID id) {

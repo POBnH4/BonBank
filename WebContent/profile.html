@@ -1,58 +1,70 @@
 <!DOCTYPE html>
 <html>
-
+<head>
 <title>BonBank</title>
-<base href="/profile">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/index.css">
-
-<script src="js/index.js"></script>
-<script src="script/index.js"></script>
-	<link rel="stylesheet"
-	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
-
-	<link rel="stylesheet"
-	href="https://formden.com/static/cdn/bootstrap-iso.css" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="icon" href="img/bankLogo.png">
-<link
-	href="https://www.cssscript.com/wp-includes/css/sticky.css?20190923"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Oswald">
-<link rel="stylesheet" 
-	href="https://fonts.googleapis.com/css?family=Open Sans">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/index.css">
+<link rel="icon" href="img/bankLogo.png">
+<link href="https://www.cssscript.com/wp-includes/css/sticky.css?20190923" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- *** Load the jQuery and jQueryUI libraries here. *** -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script src="script/index.js"></script>
-<body class="w3-light-grey">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="./script/index.js"></script>
 
+</head>
+
+<body class="w3-light-grey">
+<script>
+/* function 
+(){
+	console.log("inside get user data")
+
+	let url = "api/userGet";
+	let request = new XMLHttpRequest();
+	request.open("GET", url, false);
+	request.send();
+	let response = request.response;
+	let user = JSON.parse(response);
+	
+	let userId = user["id"];
+	$("#name").val(user["name"]);
+	$("#email").val(user["email"]);
+	let transactions = user["transactions"];
+	let transactionsName = user["transactionsName"]
+	$("#savingAccount").val(user["savingAccount"]);
+	$("#bankAccount").val(user["bankAccount"]);
+	$("#cryptoAccount").val(user["cryptoAccount"]);
+	//let total = $("#savingAccount").val() + $("#bankAccount").val() + $("#cryptoAccount").val();
+	$("#total").val(user["total"]);
+	console.log("user stuff " + user["name"] + user["email"])
+	
+	for(let i = 0; i < transactions.length; i++){
+		console.log(transactions[i] + " | " + transactionsName[i]);
+	}
+}
+window.onload = getUserData; */
+</script>
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
@@ -67,7 +79,7 @@
       <img src="img/default-avatar.png" class="w3-circle w3-margin-right" style="width:100%;">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span>   Welcome, <strong>Peter</strong></span><br>
+      <span id = "welcomeName">   Welcome, <strong>Peter</strong></span><br>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
     </div>
@@ -79,9 +91,10 @@
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bank fa-fw"></i>  General</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-hide-large w3-dark-grey w3-hover-black"><i class="fa fa-history fa-fw"></i>  History</a>
     <a href="#" class="w3-bar-item w3-button w3-padding w3-hide-large w3-dark-grey w3-hover-black"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-hide-large w3-dark-grey w3-hover-black"><i class="fa fa-history fa-fw"></i>  History</a>
     <br><br>
+    <a class="w3-bar-item w3-button w3-padding"><i class="fa fa-refresh fa-fw" aria-hidden="true"  onclick="getUserData()"></i>Refresh</a><br><br>
     <a class="w3-bar-item w3-button w3-padding"><i class="fa fa-angle-double-left fa-fw" aria-hidden="true" onclick="logout()"></i>Logout</a><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -213,7 +226,7 @@
   </div>
 </body>
 
-  <div id="id03" class="modal">
+  <div id="id03" class="modal" method="PUT">
   <form class="modal-content animate">
     <div class="container">
       <h2 class="boxtitle" style= "text-align:center;">Transfer</h2>
@@ -224,6 +237,7 @@
       <label for="uname"><b>Bank Account</b></label>
       <input id="bankNumber" type="number" placeholder="Enter a number" required>
       
+      <br>
       <label for="uname"><b>Crypto</b></label>
       <input id="cryptoNumber" type="number" placeholder="Enter a number" required>
         

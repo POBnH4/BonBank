@@ -90,24 +90,31 @@ public class User {
 	public void addTransaction(double transaction) {
 		this.transactions.add(transaction);
 	}
-
+	
+	public void addUserTransaction(String transactionName) {
+		this.userTransactions.add(transactionName);
+	}
 
 	public void setTotal(double total) {
-		this.total = total;
+		if(total < 0) this.total = 0;
+		else this.total = total;
 	}
 
 
 	public void setBankAccount(double bankAccount) {
-		this.bankAccount = bankAccount;
+		if(bankAccount < 0) this.bankAccount = 0;
+		else this.bankAccount = bankAccount;
 	}
 
 	public void setCrypto(double crypto) {
-		this.crypto = crypto;
+		if(crypto < 0) this.crypto = 0;
+		else this.crypto = crypto;
 	}
 
 
 	public void setSavingAccount(double savingAccount) {
-		this.savingAccount = savingAccount;
+		if(savingAccount < 0) this.savingAccount = 0;
+		else this.savingAccount = savingAccount;
 	}
 
 

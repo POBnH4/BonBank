@@ -1,53 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BonBank</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet"
-	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
-
-	<link rel="stylesheet"
-	href="https://formden.com/static/cdn/bootstrap-iso.css" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="icon" href="img/bankLogo.png">
-<link
-	href="https://www.cssscript.com/wp-includes/css/sticky.css?20190923"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<meta charset="UTF-8">
+<title>BonBank</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Oswald">
-<link rel="stylesheet" 
-	href="https://fonts.googleapis.com/css?family=Open Sans">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/index.css">
+<link rel="icon" href="img/bankLogo.png">
+<link href="https://www.cssscript.com/wp-includes/css/sticky.css?20190923" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- *** Load the jQuery and jQueryUI libraries here. *** -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script src="script/index.js"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="script/index.js"></script>
+  
 </head>
 
 <!-- Navbar (sit on top) -->
@@ -58,7 +40,7 @@
     <div class="w3-right w3-hide-small" style="margin: 1% 0 0 0;">
       <button class="w3-bar-item w3-button open-button" onclick="document.getElementById('id01').style.display='block'" style="width:7%; height:4%;">Login</button>
       <button class="w3-bar-item w3-button " onclick="document.getElementById('id02').style.display='block'" >Register</button>
-      <button href="pages/contact.html" class="w3-bar-item w3-button">Contact us</button>
+      <button onclick="document.location.href = 'http://localhost:8080/BBank/about.html', true;" class="w3-bar-item w3-button">About us</button>
     </div>
   </div>
 </div>
@@ -196,7 +178,7 @@
   <div class="w3-container w3-padding-32" id="about">
     <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="text-align:center;">Important information</h2>
     <br>
-    <p>1. Terms and conditions apply. You must have a current account with us, be aged 16 or over and have a mobile number to use the Barclays app.
+    <p>1. Terms and conditions apply. You must have a current account with us, be aged 16 or over and have a mobile number to use the Bon app.
     </p>
     <br>
     <p>
@@ -227,11 +209,11 @@
       <label for="psw"><b>Password</b></label>s
       <input id="loginPassword" type="password" placeholder="Enter Password" required>
         
-      <button type="submit" onclick="login()">Login</button>
+      <button type="reset" onclick="login()">Login</button>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button href= "http://www.google.com" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
@@ -269,11 +251,11 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
-  <p>Barclays Bank UK PLC and Barclays Bank PLC are each authorised
+  <p>Bon Bank UK PLC and Bon Bank PLC are each authorised
   by the Prudential Regulation Authority and regulated by <br> the
   Financial Conduct Authority and the Prudential Regulation Authority.
   <br><br>
-  Barclays Insurance Services Company Limited and Barclays Investment
+  Bon Insurance Services Company Limited and Bon Investment
   Solutions Limited are each authorised and regulated by the
   Financial Conduct Authority.
   <br><br>

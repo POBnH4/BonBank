@@ -1,3 +1,19 @@
+//import { currentUser } from './index.js'
+
+try {
+	$(function() {
+		init();
+	});
+} catch (e) {
+	alert("*** jQuery not loaded. ***");
+}
+
+//console.log("User: " + currentUser)
+
+function init() {
+	console.log("jQuery is defined!")
+}
+
 // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
 
@@ -20,3 +36,5 @@ function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
+
+
